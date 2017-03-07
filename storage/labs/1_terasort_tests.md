@@ -1,3 +1,5 @@
+## Result terasort
+
 [hdfs@ip-172-31-0-164 ~]$ hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar terasort /sebastiankramp/teragen-1G /sebastiankramp/terasort-1G
 17/03/07 07:36:23 INFO terasort.TeraSort: starting
 17/03/07 07:36:25 INFO input.FileInputFormat: Total input paths to process : 4
