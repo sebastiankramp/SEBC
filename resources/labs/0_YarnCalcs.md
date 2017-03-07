@@ -8,7 +8,7 @@ Workload factor	2
 Worker nodes	4  
 
 ##Node-Infos
-		Memory	vcores  
+                Memory	vcores  
 OS		1,5	2  
 NodeManager	1	1  
 DataNode	1	1  
