@@ -1,8 +1,8 @@
-AUF ALLEN NODES:
-- tail /proc/sys/vm/swappiness -
+#AUF ALLEN NODES:
+##tail /proc/sys/vm/swappiness
 30
 
-- mount -
+##mount
 sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
 proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
 devtmpfs on /dev type devtmpfs (rw,nosuid,size=7599360k,nr_inodes=1899840,mode=755)
@@ -34,11 +34,11 @@ cm_processes on /run/cloudera-scm-agent/process type tmpfs (rw,relatime,mode=751
 tmpfs on /run/user/1000 type tmpfs (rw,nosuid,nodev,relatime,size=1497312k,mode=700,uid=1000,gid=1000)
 tmpfs on /run/user/995 type tmpfs (rw,nosuid,nodev,relatime,size=1497312k,mode=700,uid=995,gid=992)
 
-- fdisk -l | grep dev -
+##fdisk -l | grep dev
 Disk /dev/xvda: 32.2 GB, 32212254720 bytes, 62914560 sectors
 Disk /dev/xvdb: 32.2 GB, 32212254720 bytes, 62914560 sectors
 
-- df -
+##df
 Filesystem     1K-blocks     Used Available Use% Mounted on
 /dev/xvda2      31444972 10216504  21228468  33% /
 devtmpfs         7599360        0   7599360   0% /dev
@@ -50,10 +50,10 @@ cm_processes     7486540     8216   7478324   1% /run/cloudera-scm-agent/process
 tmpfs            1497312        0   1497312   0% /run/user/1000
 tmpfs            1497312        0   1497312   0% /run/user/995
 
-- cat /proc/sys/vm/nr_hugepages -
+##cat /proc/sys/vm/nr_hugepages
 0
 
-- ip add sh -
+##ip add sh
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -67,14 +67,14 @@ tmpfs            1497312        0   1497312   0% /run/user/995
     inet6 fe80::4f6:eff:feef:6eb1/64 scope link
        valid_lft forever preferred_lft forever
 
-- nslookup 172.31.13.230 -
+##nslookup 172.31.13.230
 Server:         172.31.0.2
 Address:        172.31.0.2#53
 Non-authoritative answer:
 230.13.31.172.in-addr.arpa      name = ip-172-31-13-230.eu-central-1.compute.internal.
 Authoritative answers can be found from:
 
-- service nscd status -
+##service nscd status
 Redirecting to /bin/systemctl status  nscd.service
 nscd.service - Name Service Cache Daemon
    Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
@@ -96,7 +96,7 @@ Mar 07 16:57:07 ip-172-31-0-164.eu-central-1.compute.internal nscd[14217]: 14217
 Mar 07 16:57:07 ip-172-31-0-164.eu-central-1.compute.internal systemd[1]: Started Name Serv...
 Hint: Some lines were ellipsized, use -l to show in full.
 
-- service ntpd status -
+##service ntpd status
 Redirecting to /bin/systemctl status  ntpd.service
 ? ntpd.service - Network Time Service
    Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
