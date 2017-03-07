@@ -1,4 +1,4 @@
-mysql> show slave status\G
+##mysql> show slave status\G
 *************************** 1. row ***************************
                Slave_IO_State:
                   Master_Host: ec2-54-191-166-77.us-west-2.compute.amazonaws.com
