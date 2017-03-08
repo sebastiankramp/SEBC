@@ -7,6 +7,11 @@ Worker RAM	15
 Workload factor	2  
 Worker nodes	4  
 
+| Left-aligned | Center-aligned | Right-aligned |
+| :---         |     :---:      |          ---: |
+| git status   | git status     | git status    |
+| git diff     | git diff       | git diff      |
+
 ##Node-Infos
 ||Memory|vcores|
 | --- | --- | ---|
