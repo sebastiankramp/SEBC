@@ -1,20 +1,15 @@
 # results from Excel-Sheet
 
 ##Cluster-Infos
-Worker vcores	4  	
-Worker spindles	1  
-Worker RAM	15  
-Workload factor	2  
-Worker nodes	4  
-
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
+|Worker vcores|4|  	
+|Worker spindles|1|  
+|Worker RAM|15|  
+|Workload factor|2|
+|Worker nodes|4|
 
 ##Node-Infos
 ||Memory|vcores|
-| --- | --- | ---|
+| :--- | :---: | :---: |
 |OS|1,5|2| 
 |NodeManager|1|1|
 |DataNode|1|1|
