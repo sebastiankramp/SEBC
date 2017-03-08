@@ -26,7 +26,8 @@ curl sebastiankramp:cloudera@localhost:7180/api/v11/clusterssebastiankramp/servi
   "maintenanceMode" : false,
   "maintenanceOwners" : [ ],
   "displayName" : "Hive",
-  "entityStatus" : "GOOD_HEALTH"```
+  "entityStatus" : "GOOD_HEALTH"
+```
 
 ##start
 curl -X POST sebastiankramp:cloudera@localhost:7180/api/v11/clusters/sebastiankramp/services/hive/commands/start
@@ -38,7 +39,8 @@ curl -X POST sebastiankramp:cloudera@localhost:7180/api/v11/clusters/sebastiankr
   "serviceRef" : {
     "clusterName" : "cluster",
     "serviceName" : "hive"
-  }```
+  }
+```
 
 
 ##stop
@@ -51,6 +53,7 @@ curl -X POST sebastiankramp:cloudera@localhost:7180/api/v11/clusters/sebastiankr
   "serviceRef" : {
     "clusterName" : "cluster",
     "serviceName" : "hive"
-  }```
+  }
+```
 
 
