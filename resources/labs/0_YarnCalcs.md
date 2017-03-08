@@ -22,34 +22,36 @@
 |YARN resources|10,5|2 (Changed from -1)| 
   
 ##Setting in Cloudera
-YARN NM Properties				suggested	old	new	reason  
-yarn.nodemanager.resource.cpu-vcores		2		4	4	not loosing power  
-yarn.nodemanager.resource.memory-mb		10752		3852	10752	more memory is now available  
-YARM RM Properties				  
-yarn.scheduler.minimum-allocation-vcores	1  			
-yarn.scheduler.maximum-allocation-vcores	4  			
-yarn.scheduler.increment-allocation-vcores	1  			
-yarn.scheduler.minimum-allocation-mb		1024  			
-yarn.scheduler.maximum-allocation-mb		2048		4939	4939	more RAM allocaleable  
-yarn.scheduler.increment-allocation-mb		1024			  
-Task Container Settings		MIN		  
-mapreduce.map.memory.mb				1024	10,5	0	1GB	More Memory  
-mapreduce.map.java.opts.max.heap	800	MIN		  
-mapreduce.map.cpu.vcores		1	2		1	2	More vcores  
-mapreduce.reduce.memory.mb			1024			  
-mapreduce.reduce.java.opts.max.heap		800			  
-mapreduce.reduce.cpu.vcores			1			  
-MapReduce AM Settings				  
-yarn.app.mapreduce.am.resource.mb		1  			
-yarn.app.mapreduce.am.resource.command-opts	800			  
-yarn.app.mapreduce.am.resource.cpu-vcores	1			  
-Gateway Settings				  
--D mapreduce.map.memory.mb			2048		1024	2048	more memory useable  
--D mapreduce.reduce.memory.mb			4096		0	4096	more memory useable  
--D mapreduce.map.java.opts.max.heap		1638,4		0	1638,4	higher heap  
--D mapreduce.reduce.java.opts.max.heap		3276,8		0	3276,8	set a maximum  
--D mapreduce.job.maps				2			  
-mapreduce.job.reduces				2		8	2	not to many jobs at the same time  
+|YARN NM Properties|||old|new|
+|:---|---|---|:---:|:---:|
+|yarn.nodemanager.resource.cpu-vcores|2||4|4|
+|yarn.nodemanager.resource.memory-mb|10752||3852|10752|
+|YARM RM Properties|||||
+|yarn.scheduler.minimum-allocation-vcores|1||||
+|yarn.scheduler.maximum-allocation-vcores|4||||
+|yarn.scheduler.increment-allocation-vcores|1||||
+|yarn.scheduler.minimum-allocation-mb|1024||||
+|yarn.scheduler.maximum-allocation-mb|2048||4939|4939|
+|yarn.scheduler.increment-allocation-mb|1024||||
+|Task Container Settings||MIN|||
+|mapreduce.map.memory.mb|1024|10,5|0|1GB|
+|mapreduce.map.java.opts.max.heap|800|MIN|||
+|mapreduce.map.cpu.vcores|1|2|1|2|
+|mapreduce.reduce.memory.mb|1024||||
+|mapreduce.reduce.java.opts.max.heap|800||||
+|mapreduce.reduce.cpu.vcores|1||||
+|MapReduce AM Settings|||||
+|yarn.app.mapreduce.am.resource.mb|1||||
+|yarn.app.mapreduce.am.resource.command-opts|800||||
+|yarn.app.mapreduce.am.resource.cpu-vcores|1||||
+|Gateway Settings|||||
+|-D mapreduce.map.memory.mb|2048||1024|2048|
+|-D mapreduce.reduce.memory.mb|4096||0|4096|
+|-D mapreduce.map.java.opts.max.heap|1638,4||0|1638,4|
+|-D mapreduce.reduce.java.opts.max.heap|3276,8||0|3276,8|
+|-D mapreduce.job.maps|2||||
+|mapreduce.job.reduces|2||8|2|
+
 
 
 
