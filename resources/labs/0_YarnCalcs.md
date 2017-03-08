@@ -1,6 +1,8 @@
 # results from Excel-Sheet
 
 ##Cluster-Infos
+|Specs|amount|
+| :--- | :---: |
 |Worker vcores|4|  	
 |Worker spindles|1|  
 |Worker RAM|15|  
