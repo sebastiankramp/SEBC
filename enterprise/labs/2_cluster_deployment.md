@@ -8,7 +8,7 @@ curl sebastiankramp:cloudera@localhost:7180/api/v2/cm/deployment > /home/hdfs/lo
 
 
 ##output
-`{
+```json{
   "timestamp" : "2017-03-08T09:58:06.219Z",
   "clusters" : [ {
     "name" : "sebastiankramp",
@@ -944,4 +944,4 @@ curl sebastiankramp:cloudera@localhost:7180/api/v2/cm/deployment > /home/hdfs/lo
       "value" : "https://archive.cloudera.com/cdh5/parcels/{latest_supported}/,https://archive.cloudera.com/cdh4/parcels/latest/,https://archive.cloudera.com/impala/parcels/latest/,https://archive.cloudera.com/search/parcels/latest/,https://archive.cloudera.com/accumulo/parcels/1.4/,https://archive.cloudera.com/accumulo-c5/parcels/latest/,https://archive.cloudera.com/kafka/parcels/latest/,https://archive.cloudera.com/navigator-keytrustee5/parcels/latest/,https://archive.cloudera.com/spark/parcels/latest/,https://archive.cloudera.com/sqoop-connectors/parcels/latest/"
     } ]
   }
-}`
+}```
