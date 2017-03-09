@@ -1,7 +1,8 @@
 
 ##tables are empty because they can't be recreated after kerberos is activated
 
-```beeline> !connect jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
+```
+beeline> !connect jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
 Connecting to jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
 Connected to: Apache Hive (version 1.1.0-cdh5.10.0)
 Driver: Hive JDBC (version 1.1.0-cdh5.10.0)
