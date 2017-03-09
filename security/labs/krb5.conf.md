@@ -1,5 +1,11 @@
 #krb5.conf
 ```
+logging]
+ default = FILE:/var/log/krb5libs.log
+ kdc = FILE:/var/log/krb5kdc.log
+ admin_server = FILE:/var/log/kadmind.log  
+
+
 [libdefaults]
 default_realm = BASTI.LOCAL
 dns_lookup_kdc = false
@@ -7,20 +13,18 @@ dns_lookup_realm = false
 ticket_lifetime = 86400
 renew_lifetime = 604800
 forwardable = true
-default_tgs_enctypes = aes256-cts-hmac-sha1-96
-default_tkt_enctypes = aes256-cts-hmac-sha1-96
-permitted_enctypes = aes256-cts-hmac-sha1-96
+default_tgs_enctypes = aes256-cts
+default_tkt_enctypes = aes256-cts
+permitted_enctypes = aes256-cts
 udp_preference_limit = 1
 kdc_timeout = 3000
+default_principal_flags = +renewable
+
 [realms]
 BASTI.LOCAL = {
 kdc = ec2-54-191-166-77.us-west-2.compute.amazonaws.com
 admin_server = ec2-54-191-166-77.us-west-2.compute.amazonaws.com
-ticket_lifetime = 24h
-renew_lifetime = 7d
-forwardable = true
 }
-[domain_realms]
-.basti.local=BASTI.LOCAL
-basti.local=BASTI.LOCAL
+
+
 ```
