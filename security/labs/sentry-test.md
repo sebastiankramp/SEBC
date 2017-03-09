@@ -214,3 +214,190 @@ Kerberos principal should have 3 parts: george@BASTI.LOCAL
 Beeline version 1.1.0-cdh5.10.0 by Apache Hive
 beeline> !connect jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=george@BASTI.LOCAL
 ```
+
+## here my playground starts. I created a new default table as "testuser1", who has administrative privileges by the unix group. In this database is a table called sample01. George can see the table as told in the instructions
+
+````
+
+[root@ip-172-31-3-123 ec2-user]# su testuser1
+[testuser1@ip-172-31-3-123 ec2-user]$ kinit testuser1
+Password for testuser1@BASTI.LOCAL:
+[testuser1@ip-172-31-3-123 ec2-user]$ beeline
+Beeline version 1.1.0-cdh5.10.0 by Apache Hive
+beeline> !connect jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
+scan complete in 2ms
+Connecting to jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
+Connected to: Apache Hive (version 1.1.0-cdh5.10.0)
+Driver: Hive JDBC (version 1.1.0-cdh5.10.0)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> show databaes;
+Error: Error while compiling statement: FAILED: ParseException line 1:5 cannot recognize input near 'show' 'databaes' '<EOF>' in ddl statement (state=42000,code=40000)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> show databae;
+Error: Error while compiling statement: FAILED: ParseException line 1:5 cannot recognize input near 'show' 'databae' '<EOF>' in ddl statement (state=42000,code=40000)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> show databases;
+INFO  : Compiling command(queryId=hive_20170309113232_da37d2f6-69e0-4385-937a-f3ee91e0e52c): show databases
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:database_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20170309113232_da37d2f6-69e0-4385-937a-f3ee91e0e52c); Time taken: 0.056 seconds
+INFO  : Executing command(queryId=hive_20170309113232_da37d2f6-69e0-4385-937a-f3ee91e0e52c): show databases
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170309113232_da37d2f6-69e0-4385-937a-f3ee91e0e52c); Time taken: 0.137 seconds
+INFO  : OK
++----------------+--+
+| database_name  |
++----------------+--+
+| default        |
+| sample07       |
++----------------+--+
+2 rows selected (0.312 seconds)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> quit
+. . . . . . . . . . . . . . . . . . . . . . .> ;
+Error: Error while compiling statement: FAILED: ParseException line 1:0 cannot recognize input near 'quit' '<EOF>' '<EOF>' (state=42000,code=40000)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c>
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> [testuser1@ip-172-31-3-123 ec2-user]$ ^C
+[testuser1@ip-172-31-3-123 ec2-user]$ ^C
+[testuser1@ip-172-31-3-123 ec2-user]$
+[testuser1@ip-172-31-3-123 ec2-user]$
+[testuser1@ip-172-31-3-123 ec2-user]$ su
+Password:
+[root@ip-172-31-3-123 ec2-user]# su george
+[george@ip-172-31-3-123 ec2-user]$ kinit george
+Password for george@BASTI.LOCAL:
+[george@ip-172-31-3-123 ec2-user]$ beeline
+Beeline version 1.1.0-cdh5.10.0 by Apache Hive
+beeline> !connect jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
+scan complete in 1ms
+Connecting to jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
+Connected to: Apache Hive (version 1.1.0-cdh5.10.0)
+Driver: Hive JDBC (version 1.1.0-cdh5.10.0)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> show databases;
+INFO  : Compiling command(queryId=hive_20170309113333_928de5f6-9ab7-4e79-af9e-dfb2182cad62): show databases
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:database_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20170309113333_928de5f6-9ab7-4e79-af9e-dfb2182cad62); Time taken: 0.062 seconds
+INFO  : Executing command(queryId=hive_20170309113333_928de5f6-9ab7-4e79-af9e-dfb2182cad62): show databases
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170309113333_928de5f6-9ab7-4e79-af9e-dfb2182cad62); Time taken: 0.118 seconds
+INFO  : OK
++----------------+--+
+| database_name  |
++----------------+--+
+| default        |
++----------------+--+
+1 row selected (0.279 seconds)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c>
+[george@ip-172-31-3-123 ec2-user]$
+[george@ip-172-31-3-123 ec2-user]$ su
+Password:
+[root@ip-172-31-3-123 ec2-user]# su testuser1
+[testuser1@ip-172-31-3-123 ec2-user]$ kinit testuser1
+Password for testuser1@BASTI.LOCAL:
+[testuser1@ip-172-31-3-123 ec2-user]$ beeline
+Beeline version 1.1.0-cdh5.10.0 by Apache Hive
+beeline> !connect jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
+scan complete in 1ms
+Connecting to jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
+Connected to: Apache Hive (version 1.1.0-cdh5.10.0)
+Driver: Hive JDBC (version 1.1.0-cdh5.10.0)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> show databases;
+INFO  : Compiling command(queryId=hive_20170309113434_4fdbeeb2-b969-4c58-b2c2-435f760bcce4): show databases
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:database_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20170309113434_4fdbeeb2-b969-4c58-b2c2-435f760bcce4); Time taken: 0.063 seconds
+INFO  : Executing command(queryId=hive_20170309113434_4fdbeeb2-b969-4c58-b2c2-435f760bcce4): show databases
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170309113434_4fdbeeb2-b969-4c58-b2c2-435f760bcce4); Time taken: 0.117 seconds
+INFO  : OK
++----------------+--+
+| database_name  |
++----------------+--+
+| default        |
+| sample07       |
++----------------+--+
+2 rows selected (0.276 seconds)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> use default;
+INFO  : Compiling command(queryId=hive_20170309113434_3c331bc6-e726-41a8-8b77-face124ae392): use default
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170309113434_3c331bc6-e726-41a8-8b77-face124ae392); Time taken: 0.097 seconds
+INFO  : Executing command(queryId=hive_20170309113434_3c331bc6-e726-41a8-8b77-face124ae392): use default
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170309113434_3c331bc6-e726-41a8-8b77-face124ae392); Time taken: 0.01 seconds
+INFO  : OK
+No rows affected (0.119 seconds)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> create table sample01;
+Error: Error while compiling statement: FAILED: SemanticException [Error 10043]: Either list of columns or a custom serializer should be specified (state=42000,code=10043)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> create table sample01 (init int);
+INFO  : Compiling command(queryId=hive_20170309113535_5cb61d81-653b-4faa-ae12-df569ced9c63): create table sample01 (init int)
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170309113535_5cb61d81-653b-4faa-ae12-df569ced9c63); Time taken: 0.099 seconds
+INFO  : Executing command(queryId=hive_20170309113535_5cb61d81-653b-4faa-ae12-df569ced9c63): create table sample01 (init int)
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170309113535_5cb61d81-653b-4faa-ae12-df569ced9c63); Time taken: 0.077 seconds
+INFO  : OK
+No rows affected (0.215 seconds)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> quit
+. . . . . . . . . . . . . . . . . . . . . . .> ;
+Error: Error while compiling statement: FAILED: ParseException line 1:0 cannot recognize input near 'quit' '<EOF>' '<EOF>' (state=42000,code=40000)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> [testuser1@ip-172-31-3-123 ec2-user]$
+[testuser1@ip-172-31-3-123 ec2-user]$
+[testuser1@ip-172-31-3-123 ec2-user]$ su
+Password:
+[root@ip-172-31-3-123 ec2-user]# su george
+[george@ip-172-31-3-123 ec2-user]$ kinit george
+Password for george@BASTI.LOCAL:
+[george@ip-172-31-3-123 ec2-user]$ beeline
+Beeline version 1.1.0-cdh5.10.0 by Apache Hive
+beeline> !connect jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
+scan complete in 1ms
+Connecting to jdbc:hive2://ec2-54-187-169-81.us-west-2.compute.amazonaws.com:10000/default;principal=hive/ec2-54-187-169-81.us-west-2.compute.amazonaws.com@BASTI.LOCAL
+Connected to: Apache Hive (version 1.1.0-cdh5.10.0)
+Driver: Hive JDBC (version 1.1.0-cdh5.10.0)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> show databases;
+INFO  : Compiling command(queryId=hive_20170309113535_2fdede6a-0a80-4c5e-9c4a-fbd865b2a390): show databases
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:database_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20170309113535_2fdede6a-0a80-4c5e-9c4a-fbd865b2a390); Time taken: 0.055 seconds
+INFO  : Executing command(queryId=hive_20170309113535_2fdede6a-0a80-4c5e-9c4a-fbd865b2a390): show databases
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170309113535_2fdede6a-0a80-4c5e-9c4a-fbd865b2a390); Time taken: 0.112 seconds
+INFO  : OK
++----------------+--+
+| database_name  |
++----------------+--+
+| default        |
++----------------+--+
+1 row selected (0.259 seconds)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> use default
+. . . . . . . . . . . . . . . . . . . . . . .> ;
+INFO  : Compiling command(queryId=hive_20170309113535_602b3886-2a42-4330-92e1-7e05e5efcce8): use default
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170309113535_602b3886-2a42-4330-92e1-7e05e5efcce8); Time taken: 0.092 seconds
+INFO  : Executing command(queryId=hive_20170309113535_602b3886-2a42-4330-92e1-7e05e5efcce8): use default
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170309113535_602b3886-2a42-4330-92e1-7e05e5efcce8); Time taken: 0.01 seconds
+INFO  : OK
+No rows affected (0.113 seconds)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> show tables;
+INFO  : Compiling command(queryId=hive_20170309113636_53dae0bd-ecc7-4466-8c20-87535cabe9b8): show tables
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20170309113636_53dae0bd-ecc7-4466-8c20-87535cabe9b8); Time taken: 0.054 seconds
+INFO  : Executing command(queryId=hive_20170309113636_53dae0bd-ecc7-4466-8c20-87535cabe9b8): show tables
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170309113636_53dae0bd-ecc7-4466-8c20-87535cabe9b8); Time taken: 0.097 seconds
+INFO  : OK
++-----------+--+
+| tab_name  |
++-----------+--+
+| sample01  |
++-----------+--+
+1 row selected (0.17 seconds)
+0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c>
+
+```
