@@ -20,4 +20,7 @@ ticket_lifetime = 24h
 renew_lifetime = 7d
 forwardable = true
 }
+[domain_realms]
+.basti.local=BASTI.LOCAL
+basti.local=BASTI.LOCAL
 ```
