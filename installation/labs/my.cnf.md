@@ -1,6 +1,7 @@
-+/etc/my.cnf
+#/etc/my.cnf
 
-```# For advice on how to change settings please see
+```
+# For advice on how to change settings please see
 # http://dev.mysql.com/doc/refman/5.5/en/server-configuration-defaults.html
 
 [mysqld]

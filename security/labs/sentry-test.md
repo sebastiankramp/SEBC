@@ -41,9 +41,6 @@ INFO  : Starting task [Stage-0:DDL] in serial mode
 INFO  : Completed executing command(queryId=hive_20170309103939_6dc5ddf8-fbc2-47b9-b014-660deb187a17); Time taken: 0.087 seconds
 INFO  : OK
 No rows affected (0.19 seconds)
-0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> GRANT ROLE sentry_admin TO GROUP {testgroup1}
-. . . . . . . . . . . . . . . . . . . . . . .> ;
-Error: Error while compiling statement: FAILED: ParseException line 1:33 cannot recognize input near '{' 'testgroup1' '}' in identifier for principal spec (state=42000,code=40000)
 0: jdbc:hive2://ec2-54-187-169-81.us-west-2.c> GRANT ROLE sentry_admin TO GROUP testgroup1;
 INFO  : Compiling command(queryId=hive_20170309104141_3a5cfa20-e248-4169-8b5f-b3c1e0dc8fd8): GRANT ROLE sentry_admin TO GROUP testgroup1
 INFO  : Semantic Analysis Completed
