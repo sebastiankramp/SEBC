@@ -1,7 +1,7 @@
 ##mysql> show slave status\G
 ```
 *************************** 1. row ***************************
-               Slave_IO_State:
+               Slave_IO_State: Waiting for master to send event
                   Master_Host: ec2-54-191-166-77.us-west-2.compute.amazonaws.com
                   Master_User: root
                   Master_Port: 3306
@@ -11,7 +11,7 @@
                Relay_Log_File: mysql-relay-bin.000001
                 Relay_Log_Pos: 4
         Relay_Master_Log_File: log-bin.000003
-             Slave_IO_Running: No
+             Slave_IO_Running: Yes
             Slave_SQL_Running: Yes
               Replicate_Do_DB:
           Replicate_Ignore_DB:
