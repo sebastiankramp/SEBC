@@ -3,8 +3,8 @@
 ```
 1
 ```
-```
 ##mount
+```
 sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
 proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
 devtmpfs on /dev type devtmpfs (rw,nosuid,size=7599360k,nr_inodes=1899840,mode=755)
