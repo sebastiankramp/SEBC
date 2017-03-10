@@ -1008,3 +1008,6 @@ Thanks for using MySQL!
 
 
 Cleaning up...
+
+```
+#I lost round about 30 minutes because of closed Ports in AWS
